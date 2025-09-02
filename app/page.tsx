@@ -144,7 +144,7 @@ export default function Portfolio() {
   const projectsData = [
     {
       name: "RoomM8",
-      logoUrl: "/RoomM8.png",
+      logoUrl: "/roomM8.png",
       link: "https://github.com/Jay-Kumar-Patel/RoomM8",
       details:
         "RoomM8 is a full-stack roommate collaboration platform that ends the “who paid what / who’s doing what” chaos by centralizing expenses, tasks, announcements, and grocery lists into private, room-scoped workspaces accessed via unique invite codes. I containerized the app, automated delivery with CI/CD, and provisioned the entire environment with infrastructure as code aligned to the AWS Well-Architected Framework.",
