@@ -7,6 +7,9 @@ import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si";
 import Image from "next/image";
 
 export default function Portfolio() {
+  const bp = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const withBase = (p: string) => `${bp}${p}`;
+
   const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
@@ -193,7 +196,7 @@ export default function Portfolio() {
           <div className="mb-8 flex flex-col items-start">
             <div className="w-32 h-32 rounded-full mb-6 overflow-hidden">
               <Image
-                src="/profile.jpeg"
+                src={withBase("/profile.jpeg")}
                 alt="Profile"
                 width={128}
                 height={128}
@@ -274,7 +277,7 @@ export default function Portfolio() {
           <div className="lg:hidden text-center mb-12">
             <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden">
               <Image
-                src="/profile.jpeg"
+                src={withBase("/profile.jpeg")}
                 alt="Profile"
                 width={128}
                 height={128}
@@ -372,7 +375,7 @@ export default function Portfolio() {
                     aria-label={tech.name}
                   >
                     <img
-                      src={tech.icon}
+                      src={withBase(tech.icon)}
                       alt={`${tech.name} icon`}
                       className="h-full w-full object-contain transition-transform duration-150 active:scale-95 group-active:scale-110 group-focus:scale-110"
                       loading="lazy"
@@ -399,7 +402,7 @@ export default function Portfolio() {
                 {technologyLogos.map((tech) => (
                   <div key={tech.name} className="relative group h-10 w-10">
                     <img
-                      src={tech.icon}
+                      src={withBase(tech.icon)}
                       alt={`${tech.name} icon`}
                       className="h-full w-full object-contain transition-transform duration-150 group-hover:scale-110 group-hover:drop-shadow"
                       loading="lazy"
@@ -435,7 +438,7 @@ export default function Portfolio() {
                   <div className="lg:hidden">
                     <div className="flex justify-center mb-4">
                       <img
-                        src={item.logoUrl || "/placeholder.svg"}
+                        src={withBase(item.logoUrl) || "/placeholder.svg"}
                         alt={`${item.university} logo`}
                         className="w-24 h-24 object-contain"
                       />
@@ -493,7 +496,7 @@ export default function Portfolio() {
                         </div>
                         <div className="flex justify-center lg:justify-start">
                           <img
-                            src={item.logoUrl || "/placeholder.svg"}
+                            src={withBase(item.logoUrl) || "/placeholder.svg"}
                             alt={`${item.university} logo`}
                             className="w-24 h-24 object-contain"
                           />
@@ -558,7 +561,7 @@ export default function Portfolio() {
                   <div className="lg:hidden">
                     <div className="flex justify-center mb-4">
                       <img
-                        src={item.logoUrl || "/placeholder.svg"}
+                        src={withBase(item.logoUrl) || "/placeholder.svg"}
                         alt={`${item.name} logo`}
                         className="w-24 h-24 object-contain"
                       />
@@ -617,7 +620,7 @@ export default function Portfolio() {
                         </div>
                         <div className="flex justify-center lg:justify-start">
                           <img
-                            src={item.logoUrl || "/placeholder.svg"}
+                            src={withBase(item.logoUrl) || "/placeholder.svg"}
                             alt={`${item.name} logo`}
                             className="w-24 h-24 object-contain"
                           />
@@ -682,7 +685,7 @@ export default function Portfolio() {
                   <div className="lg:hidden">
                     <div className="flex justify-center mb-4">
                       <img
-                        src={item.logoUrl || "/placeholder.svg"}
+                        src={withBase(item.logoUrl) || "/placeholder.svg"}
                         alt={`${item.name} logo`}
                         className="w-24 h-24 object-contain"
                       />
@@ -731,7 +734,7 @@ export default function Portfolio() {
                       <div className="lg:w-44 xl:w-48 lg:flex-shrink-0 lg:flex lg:flex-col">
                         <div className="flex justify-center lg:justify-start">
                           <img
-                            src={item.logoUrl || "/placeholder.svg"}
+                            src={withBase(item.logoUrl) || "/placeholder.svg"}
                             alt={`${item.name} logo`}
                             className="w-35 h-auto object-contain"
                           />
