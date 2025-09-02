@@ -26,10 +26,9 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
+      # Make pnpm available
+      - run: corepack enable && corepack prepare pnpm@9.0.0 --activate
+      - run: pnpm -v
 
       - uses: actions/configure-pages@v5
         with:
@@ -43,7 +42,7 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec next build
+      - run: pnpm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
