@@ -7,7 +7,7 @@ import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si";
 import Image from "next/image";
 
 export default function Portfolio() {
-  const bp = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const bp = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const withBase = (p: string) => `${bp}${p}`;
 
   const [activeSection, setActiveSection] = useState("about");
@@ -185,6 +185,22 @@ export default function Portfolio() {
       details:
         "TinyDB is a lightweight, MySQL-style relational database built in Java with a CLI for DDL/DML and ACID transactions (commit/rollback). It enforces core constraints (PK/FK/UNIQUE/NOT NULL), adds 2FA security, and auto-generates ERDs with SQL export for smooth migration.",
       technologies: ["Java"],
+    },
+    {
+      name: "Slackify",
+      logoUrl: "/slackify.png",
+      link: "https://github.com/Jay-Kumar-Patel/Slackify",
+      details:
+        "Slackify is a cloud-native platform that seamlessly connects GitHub events with Slack to enable real-time collaboration and automated issue tracking. The infrastructure is deployed using Infrastructure as Code (IaC) with CloudFormation. This helps teams stay instantly informed, reduce response times, and improve overall productivity.",
+      technologies: [
+        "AWS",
+        "Slack API",
+        "GitHub WebHook",
+        "Docker",
+        "Infrastructure-as-Code",
+        "Java",
+        "Spring Boot",
+      ],
     },
   ];
 
@@ -365,7 +381,7 @@ export default function Portfolio() {
             </div>
 
             {/* Tech Logos - Mobile */}
-            <div className="lg:hidden mt-12">
+            <div className="lg:hidden mt-12 mb-16">
               <div className="grid grid-cols-5 gap-4 justify-items-center">
                 {technologyLogos.map((tech) => (
                   <button
@@ -397,7 +413,7 @@ export default function Portfolio() {
             </div>
 
             {/* Tech Logos - Desktop */}
-            <div className="hidden lg:block mt-12">
+            <div className="hidden lg:block mt-12 mb-16">
               <div className="flex flex-wrap gap-6 justify-center">
                 {technologyLogos.map((tech) => (
                   <div key={tech.name} className="relative group h-10 w-10">
@@ -419,6 +435,87 @@ export default function Portfolio() {
                     </span>
                   </div>
                 ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CERTIFICATIONS */}
+          <section id="certifications" className="mb-16">
+            <h2 className="font-[800] mb-8 tracking-wide text-xl lg:text-2xl">
+              CERTIFICATIONS
+            </h2>
+
+            <div className="space-y-8">
+              <div className="block hover:scale-105 hover:shadow-lg hover:ring-2 hover:ring-black transition-all duration-200 p-4 rounded-lg">
+                {/* Mobile */}
+                <div className="lg:hidden">
+                  <div className="flex items-start gap-4">
+                    <img
+                      src={withBase("/aws.svg")}
+                      alt="AWS logo"
+                      className="w-12 h-12 object-contain rounded-md"
+                    />
+
+                    <div className="flex-1">
+                      <a
+                        href="https://www.credly.com/badges/5d2af1b8-d81d-4919-84c5-d982ae224321/public_url" /* replace with your credential URL */
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-2 text-base font-semibold leading-snug hover:text-blue-600 transition-colors"
+                      >
+                        <span>
+                          AWS Certified Solutions Architect – Associate
+                        </span>
+                        <ExternalLink
+                          size={16}
+                          className="text-slate-400 group-hover:text-blue-600"
+                        />
+                      </a>
+
+                      <p className="text-sm font-medium text-slate-700">
+                        Amazon Web Services (AWS)
+                      </p>
+                      <p className="text-sm font-regular text-slate-600 mt-1">
+                        Issued Aug 2025 · Expires Aug 2028
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop */}
+                <div className="hidden lg:block">
+                  <div className="flex items-center gap-6">
+                    <img
+                      src={withBase("/aws.svg")}
+                      alt="AWS logo"
+                      className="w-14 h-14 object-contain rounded-md"
+                    />
+
+                    <div className="flex-1">
+                      <a
+                        href="https://www.credly.com/badges/5d2af1b8-d81d-4919-84c5-d982ae224321/public_url" /* replace with your credential URL */
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-2 text-xl font-semibold hover:text-blue-600 transition-colors"
+                      >
+                        <span>
+                          AWS Certified Solutions Architect – Associate
+                        </span>
+                        <ExternalLink
+                          size={16}
+                          className="text-slate-400 group-hover:text-blue-600"
+                        />
+                      </a>
+
+                      <p className="text-base font-medium text-slate-700">
+                        Amazon Web Services (AWS)
+                      </p>
+                      <p className="text-sm font-regular text-slate-600 mt-0.5">
+                        Issued Aug 2025 · Expires Aug 2028
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
