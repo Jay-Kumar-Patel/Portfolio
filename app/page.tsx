@@ -44,6 +44,7 @@ export default function Portfolio() {
     { name: "TypeScript", icon: "/typescript.svg" },
     { name: "Node", icon: "/node.svg" },
     { name: "Java", icon: "/java.svg" },
+    { name: "Go", icon: "/go.svg" },
     { name: "Azure", icon: "/azure.svg" },
     { name: "Git", icon: "/git.svg" },
     { name: "React", icon: "/react.svg" },
@@ -51,7 +52,7 @@ export default function Portfolio() {
     { name: "Docker", icon: "/docker.svg" },
     { name: "Kubernetes", icon: "/kubernetes.svg" },
     { name: "GCP", icon: "/gcp.svg" },
-    { name: "Android", icon: "/android.svg" },
+    { name: "Android Development", icon: "/android.svg" },
     { name: "Spring", icon: "/spring.svg" },
     { name: "Python", icon: "/python.svg" },
   ];
@@ -104,7 +105,7 @@ export default function Portfolio() {
       link: "https://www.applyboard.com/",
       details:
         "Built and deployed a serverless automation service to replace a legacy integration and reduce maintenance costs. Rolled out custom VPC domain solutions for internal APIs, migrating multiple services from public endpoints to secure private APIs. Enhanced security and observability with AWS X-Ray, reducing issue resolution time.",
-      technologies: ["AWS", "TypeScript", "Node", "AWS CDK", "GitHub Actions"],
+      technologies: ["AWS", "TypeScript", "Node", "React", "AWS CDK", "GitHub Actions", "Infrastructure-as-Code"],
     },
     {
       date: "OCT 2023 - MAY 2024",
@@ -114,12 +115,19 @@ export default function Portfolio() {
       details:
         "Developed and maintained a POS system supporting sales, inventory, and staff management with real-time access and updates. Integrated slot machine data from Arduino devices via the MQTT protocol to provide scheduled and historical reporting, improving accuracy and preventing manual errors. Built CI/CD pipelines with Jenkins to roll out the POS system across multiple stores, ensuring secure, high-performance operations and faster updates.",
       technologies: [
+        "AWS",
+        "Go",
         "React",
+        "Java",
         "Spring Boot",
         "MySQL",
         "Jenkins",
         "Docker",
         "Kubernetes",
+        "Microservices",
+        "MQTT Protocol",
+        "Arduino",
+
       ],
     },
     {
@@ -132,11 +140,12 @@ export default function Portfolio() {
       technologies: [
         "Java",
         "XML",
-        "Android Development",
+        "Mobile Application Development",
         "Firebase",
         "MPAndroidChart",
         "Jetpack Compose",
         "Lottie",
+        "Android Studio",
       ],
     },
   ];
@@ -441,7 +450,7 @@ export default function Portfolio() {
 
           {/* CERTIFICATIONS */}
           <section id="certifications" className="mb-16">
-            <h2 className="font-[800] mb-8 tracking-wide text-xl lg:text-2xl">
+            <h2 className="font-[800] mb-8 tracking-wide text-xl lg:text-2xl antialiased">
               CERTIFICATIONS
             </h2>
 
