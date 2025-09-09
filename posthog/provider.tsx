@@ -1,30 +1,28 @@
-'use client'
+"use client";
 
-import { useEffect } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { initPostHog, posthog } from './config'
+import { useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { initPostHog, posthog } from "./config";
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    // Initialize PostHog
-    initPostHog()
-  }, [])
+    initPostHog();
+  }, []);
 
   useEffect(() => {
-    // Track pageviews
     if (pathname) {
-      let url = window.origin + pathname
+      let url = window.origin + pathname;
       if (searchParams && searchParams.toString()) {
-        url = url + '?' + searchParams.toString()
+        url = url + "?" + searchParams.toString();
       }
-      posthog.capture('$pageview', {
+      posthog.capture("$pageview", {
         $current_url: url,
-      })
+      });
     }
-  }, [pathname, searchParams])
+  }, [pathname, searchParams]);
 
-  return <>{children}</>
+  return <>{children}</>;
 }
