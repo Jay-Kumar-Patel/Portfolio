@@ -46,6 +46,16 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('**/*.[jt]s', '**/*.[jt]sx', '**/*.[cm]ts', '**/*.[cm]tsx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-
+      
+      - name: Debug PostHog Environment Variables
+        run: |
+          echo "PostHog Key exists: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY != '' }}"
+          echo "PostHog Host exists: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST != '' }}"
+          echo "PostHog Key length: ${#NEXT_PUBLIC_POSTHOG_KEY}"
+          echo "PostHog Key starts with 'ph_': $(echo $NEXT_PUBLIC_POSTHOG_KEY | grep -q '^ph_' && echo 'true' || echo 'false')"
+        env:
+          NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
+          NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
