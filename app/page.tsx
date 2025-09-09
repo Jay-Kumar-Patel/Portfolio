@@ -12,6 +12,8 @@ export default function Portfolio() {
   const withBase = (p: string) => `${bp}${p}`;
 
   console.log("PostHog enabled");
+  console.log("PostHog Key:", process.env.NEXT_PUBLIC_POSTHOG_KEY);
+  console.log("PostHog Host:", process.env.NEXT_PUBLIC_POSTHOG_HOST);
 
   const [activeSection, setActiveSection] = useState("about");
 
