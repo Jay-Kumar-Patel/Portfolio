@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si";
 import Image from "next/image";
+import { posthog } from "../posthog/config";
 
 export default function Portfolio() {
   const bp = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -37,6 +38,19 @@ export default function Portfolio() {
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
     el?.scrollIntoView({ behavior: "smooth" });
+
+    posthog.capture("section_navigated", {
+      section: sectionId,
+      method: "navigation_click",
+    });
+  };
+
+  const trackExternalLink = (linkName: string, url: string) => {
+    posthog.capture("external_link_clicked", {
+      link_name: linkName,
+      destination_url: url,
+      section: activeSection,
+    });
   };
 
   const technologyLogos = [
@@ -105,7 +119,15 @@ export default function Portfolio() {
       link: "https://www.applyboard.com/",
       details:
         "Built and deployed a serverless automation service to replace a legacy integration and reduce maintenance costs. Rolled out custom VPC domain solutions for internal APIs, migrating multiple services from public endpoints to secure private APIs. Enhanced security and observability with AWS X-Ray, reducing issue resolution time.",
-      technologies: ["AWS", "TypeScript", "Node", "React", "AWS CDK", "GitHub Actions", "Infrastructure-as-Code"],
+      technologies: [
+        "AWS",
+        "TypeScript",
+        "Node",
+        "React",
+        "AWS CDK",
+        "GitHub Actions",
+        "Infrastructure-as-Code",
+      ],
     },
     {
       date: "OCT 2023 - MAY 2024",
@@ -127,7 +149,6 @@ export default function Portfolio() {
         "Microservices",
         "MQTT Protocol",
         "Arduino",
-
       ],
     },
     {
@@ -274,6 +295,12 @@ export default function Portfolio() {
               rel="noopener noreferrer"
               className="text-[#3f3d56] hover:opacity-80 transition-colors"
               aria-label="LinkedIn"
+              onClick={() =>
+                trackExternalLink(
+                  "LinkedIn",
+                  "https://www.linkedin.com/in/jaykumarpatel411/"
+                )
+              }
             >
               <SiLinkedin size={24} />
             </a>
@@ -283,6 +310,12 @@ export default function Portfolio() {
               rel="noopener noreferrer"
               className="text-[#3f3d56] hover:opacity-80 transition-colors"
               aria-label="GitHub"
+              onClick={() =>
+                trackExternalLink(
+                  "GitHub",
+                  "https://github.com/Jay-Kumar-Patel"
+                )
+              }
             >
               <SiGithub size={24} />
             </a>
@@ -290,6 +323,12 @@ export default function Portfolio() {
               href="mailto:jaykumarpatel111296@gmail.com"
               className="text-[#3f3d56] hover:opacity-80 transition-colors"
               aria-label="Email"
+              onClick={() =>
+                trackExternalLink(
+                  "Email",
+                  "mailto:jaykumarpatel111296@gmail.com"
+                )
+              }
             >
               <SiGmail size={24} />
             </a>
@@ -327,6 +366,12 @@ export default function Portfolio() {
                 rel="noopener noreferrer"
                 className="text-[#3f3d56] hover:opacity-80 transition-colors"
                 aria-label="LinkedIn"
+                onClick={() =>
+                  trackExternalLink(
+                    "LinkedIn",
+                    "https://www.linkedin.com/in/jaykumarpatel411/"
+                  )
+                }
               >
                 <SiLinkedin size={24} />
               </a>
@@ -336,6 +381,12 @@ export default function Portfolio() {
                 rel="noopener noreferrer"
                 className="text-[#3f3d56] hover:opacity-80 transition-colors"
                 aria-label="GitHub"
+                onClick={() =>
+                  trackExternalLink(
+                    "GitHub",
+                    "https://github.com/Jay-Kumar-Patel"
+                  )
+                }
               >
                 <SiGithub size={24} />
               </a>
@@ -343,6 +394,12 @@ export default function Portfolio() {
                 href="mailto:jaykumarpatel111296@gmail.com"
                 className="text-[#3f3d56] hover:opacity-80 transition-colors"
                 aria-label="Email"
+                onClick={() =>
+                  trackExternalLink(
+                    "Email",
+                    "mailto:jaykumarpatel111296@gmail.com"
+                  )
+                }
               >
                 <SiGmail size={24} />
               </a>
@@ -471,6 +528,12 @@ export default function Portfolio() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group inline-flex items-center gap-2 text-base font-semibold leading-snug hover:text-blue-600 transition-colors"
+                        onClick={() =>
+                          trackExternalLink(
+                            "AWS Certification",
+                            "https://www.credly.com/badges/5d2af1b8-d81d-4919-84c5-d982ae224321/public_url"
+                          )
+                        }
                       >
                         <span>
                           AWS Certified Solutions Architect – Associate
@@ -506,6 +569,12 @@ export default function Portfolio() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group inline-flex items-center gap-2 text-xl font-semibold hover:text-blue-600 transition-colors"
+                        onClick={() =>
+                          trackExternalLink(
+                            "AWS Certification",
+                            "https://www.credly.com/badges/5d2af1b8-d81d-4919-84c5-d982ae224321/public_url"
+                          )
+                        }
                       >
                         <span>
                           AWS Certified Solutions Architect – Associate
@@ -562,6 +631,9 @@ export default function Portfolio() {
                         className="group flex w-fit items-center justify-center gap-2 mb-4 mx-auto
                text-base font-semibold leading-snug tracking-tight
                text-[#2c2a3b] hover:text-blue-600 transition-colors"
+                        onClick={() =>
+                          trackExternalLink(`${item.university}`, item.link!)
+                        }
                       >
                         <span>
                           {item.course} - {item.university}
@@ -617,6 +689,12 @@ export default function Portfolio() {
                             className="group inline-flex items-center justify-center lg:justify-start gap-2 mb-2
                               text-xl font-semibold leading-snug tracking-tight
                               text-[#2c2a3b] hover:text-blue-600 transition-colors"
+                            onClick={() =>
+                              trackExternalLink(
+                                `${item.university}`,
+                                item.link!
+                              )
+                            }
                           >
                             <span>
                               {item.course} - {item.university}
@@ -687,6 +765,9 @@ export default function Portfolio() {
                         className="group flex w-fit items-center justify-center gap-2 mb-4 mx-auto
                          text-base font-semibold leading-snug tracking-tight
                          hover:text-blue-600 transition-colors"
+                        onClick={() =>
+                          trackExternalLink(`${item.name}`, item.link!)
+                        }
                       >
                         <span>{item.name}</span>
                         <ExternalLink
@@ -741,6 +822,9 @@ export default function Portfolio() {
                             rel="noopener noreferrer"
                             className="group inline-flex items-center justify-center lg:justify-start gap-2 mb-3
                              text-xl font-semibold hover:text-blue-600 transition-colors"
+                            onClick={() =>
+                              trackExternalLink(`${item.name}`, item.link!)
+                            }
                           >
                             <span>{item.name}</span>
                             <ExternalLink
@@ -804,6 +888,9 @@ export default function Portfolio() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group flex w-fit items-center justify-center gap-2 mb-4 mx-auto text-lg lg:text-xl font-bold leading-snug tracking-tight hover:text-blue-600 transition-colors"
+                        onClick={() =>
+                          trackExternalLink(`${item.name}`, item.link!)
+                        }
                       >
                         <span>{item.name}</span>
                         <ExternalLink
@@ -855,6 +942,9 @@ export default function Portfolio() {
                             rel="noopener noreferrer"
                             className="group inline-flex items-center justify-center lg:justify-start gap-2 mb-3
                              text-xl font-semibold hover:text-blue-600 transition-colors"
+                            onClick={() =>
+                              trackExternalLink(`${item.name}`, item.link!)
+                            }
                           >
                             <span>{item.name}</span>
                             <ExternalLink

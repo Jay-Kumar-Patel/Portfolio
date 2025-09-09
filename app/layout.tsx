@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
+import { PostHogProvider } from "../posthog/provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         suppressHydrationWarning
         className={`${inter.variable} font-sans min-h-screen antialiased text-[#3f3d56]`}
       >
-        {children}
+        <PostHogProvider>{children}</PostHogProvider>
       </body>
     </html>
   );
