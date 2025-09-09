@@ -11,6 +11,8 @@ export default function Portfolio() {
   const bp = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const withBase = (p: string) => `${bp}${p}`;
 
+  console.log("PostHog enabled");
+
   const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
